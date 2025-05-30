@@ -1,0 +1,171 @@
+@use "variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $backgroundPage;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.page {
+    height: 568px;
+    width: 320px;
+    position: relative;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10%;
+        padding: 20px;  
+    }
+}
+
+.header {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.progress {
+    position: relative;
+    &__bar {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        transition: all 0.5s ease;
+    }
+    &__buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        align-items: center;
+        gap: 10px 30px;
+    }
+}
+
+.left,
+.right {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+.spinner {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    border-radius: 50%;
+    border: 10px solid $greySpiner;
+    transform: rotate(-45deg);
+    transition: .3s linear;
+    .left & {
+        border-right: 10px solid $blue;
+        border-bottom: 10px solid $blue;
+    }
+    .right & {
+        border-left: 10px solid $blue;
+        border-top: 10px solid $blue;
+        right: 0;
+    }
+}
+
+input[type="number"] {
+    border-radius: 50px;
+    max-width: 50px;
+    min-height: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.switch {
+    position: relative;
+}
+
+.switch__btn {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: -4px;
+    left: 0;
+    border-radius: 50px;
+    background-color: $greySwitch;
+    cursor: pointer;
+    &::before {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        background-color: $white;
+        content: "";
+        transition: .4s;
+    }
+    input:checked+& {
+        background-color: $blue;
+    }
+    input:checked+&:before {
+        transform: translateX(20px);
+    }
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}
+
+.hide {
+    opacity: 0;
+    transition: all .4s ease;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .main__wrapper {
+        flex-direction: row;
+    }
+    .page {
+        width: 568px;
+        height: 320px;
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ozon</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+    <div class="page wrapper">
+        <main class="main">
+            <div class="main__wrapper">
+                <header class="header">Progress</header>
+                <div class="progress__bar">
+                    <div class="left">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="right">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                <div class="progress__buttons">
+                    <input type="number" id="current-value" min="0" max="100">
+                    <label for="current-value">Value</label>
+                    <label class="switch">
+                        <input type="checkbox" class="switch__btn" id="animate__btn"></input>
+                        <span class="slider"></span>
+                    </label>
+                    <span>Animate</span>
+                    <label class="switch">
+                        <input type="checkbox" class="switch__btn" id="hide__btn"></input>
+                        <span class="slider"></span>
+                    </label>
+                    <label for="hide__btn">Hide</label>
+                </div>
+            </div>
+    </div>
+    </main>
+    </div>
+</body>
+<script type="module" src="./scripts/API.js"></script>
+<script type="module" src="./scripts/app.js"></script>
+
+</html>
