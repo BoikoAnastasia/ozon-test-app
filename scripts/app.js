@@ -9,14 +9,13 @@ const currentValue = document.querySelector("#current-value");
 const animateBtn = document.querySelector("#animate__btn");
 const hideBtn = document.querySelector("#hide__btn");
 
-let previousValue = 0;
-
 const checkValueInput = (value) => {
-    if(value < 0 || value > 100) {
+    if(value < 0 || value > 100 || value.length > 3) {
         currentValue.value = null;
+        progressBarBreeding(0, leftSpinner, rightSpinner);
         return;
     }
-    progressBarBreeding(value, leftSpinner, rightSpinner, previousValue);
+    progressBarBreeding(value, leftSpinner, rightSpinner);
 }
 
 currentValue.addEventListener("input", (e) => checkValueInput(e.target.value))

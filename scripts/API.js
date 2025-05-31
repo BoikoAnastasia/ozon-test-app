@@ -1,5 +1,6 @@
 
-export const progressBarBreeding = (inputVal, leftSpinner, rightSpinner, previousValue) => {
+let previousValue = 0;
+export const progressBarBreeding = (inputVal, leftSpinner, rightSpinner) => {
     const value = Math.max(0, Math.min(100, inputVal));
 
     const angleRight = Math.min(value, 50) * 3.6 - 45;

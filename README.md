@@ -83,15 +83,16 @@ const animateBtn = document.querySelector("#animate__btn");
 const hideBtn = document.querySelector("#hide__btn");
 ```
 
-Проверка на введенное число из input для отображения графика. Если число меньше нуля или больше 100, то в элемент html передается null. В противном случае вызывается функция progressBarBreeding из API для отрисовки графика:
+Проверка на введенное число из input для отображения графика. Если число меньше нуля, больше 100 или длина более 3 элементов, то в элемент input передается null и сбрасывается отрисовка графика. В противном случае вызывается функция progressBarBreeding из API для отрисовки графика:
 
 ```
 const checkValueInput = (value) => {
-    if(value < 0 || value > 100) {
+    if(value < 0 || value > 100 || value.length > 3) {
         currentValue.value = null;
+        progressBarBreeding(0, leftSpinner, rightSpinner);
         return;
     }
-    progressBarBreeding(value, leftSpinner, rightSpinner, previousValue);
+    progressBarBreeding(value, leftSpinner, rightSpinner);
 }
 ```
 Прослушиватели событий для switch и input:
